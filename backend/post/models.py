@@ -8,10 +8,13 @@ class Post(models.Model):
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     is_private = models.BooleanField(default=False)
-    likes = models.ManyToManyField(Like, blank=True)
+    likes = models.ManyToManyField(User, related_name="blogpost", blank=True)
 
     class Meta:
         ordering = ('-created_at',)
 
     def get_date(self):
         return humanize.naturaltime(self.created_at)
+
+    def total_likes(self):
+        return self.likes.count()
