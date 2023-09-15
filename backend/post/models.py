@@ -31,14 +31,3 @@ class Post(models.Model):
 
     def total_likes(self):
         return self.likes.count()
-
-
-class Comment(models.Model):
-    post = models.ForeignKey(Post, related_name="comments" , on_delete=models.CASCADE)
-    name = models.ForeignKey(User, on_delete=models.CASCADE)
-    body = models.TextField(max_length=200)
-    created_at = models.DateTimeField(auto_now_add=True)
-    likes = models.ManyToManyField(User, blank=True)
-
-    def total_clikes(self):
-        return self.likes.count()
