@@ -28,6 +28,3 @@ class Post(models.Model):
 
     def get_date(self):
         return humanize.naturaltime(self.created_at)
-
-    def total_likes(self):
-        return self.likes.count()
