@@ -12,6 +12,5 @@ class User(AbstractUser):
     )
     email = models.EmailField(unique=True, blank=False, null=False)
     avatar = models.ImageField(upload_to='user_avatars', blank=True, null=True)
-    following = models.ManyToManyField('self')
-    friends = models.ManyToManyField('self')
+    favorite_users = models.ManyToManyField('self')
     bio = models.TextField()
